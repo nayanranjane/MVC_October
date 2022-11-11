@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RM_ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AptitudeAnswer">
+          <Key>
+            <PropertyRef Name="AnsSheetId" />
+          </Key>
+          <Property Name="AnsSheetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateId" Type="int" />
+          <Property Name="QueID" Type="int" />
+          <Property Name="UserResponse" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Duration" Type="int" />
+        </EntityType>
+        <EntityType Name="AptitudeQuestion">
+          <Key>
+            <PropertyRef Name="QueId" />
+          </Key>
+          <Property Name="QueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Que" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="QueOpA" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="QueOpB" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="QueOpC" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="QueOpD" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="QueAns" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AptitudeA__QueID__44FF419A">
+          <End Role="AptitudeQuestion" Type="Self.AptitudeQuestion" Multiplicity="0..1" />
+          <End Role="AptitudeAnswer" Type="Self.AptitudeAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AptitudeQuestion">
+              <PropertyRef Name="QueId" />
+            </Principal>
+            <Dependent Role="AptitudeAnswer">
+              <PropertyRef Name="QueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RM_ProjectModelStoreContainer">
+          <EntitySet Name="AptitudeAnswer" EntityType="Self.AptitudeAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AptitudeQuestion" EntityType="Self.AptitudeQuestion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AptitudeA__QueID__44FF419A" Association="Self.FK__AptitudeA__QueID__44FF419A">
+            <End Role="AptitudeQuestion" EntitySet="AptitudeQuestion" />
+            <End Role="AptitudeAnswer" EntitySet="AptitudeAnswer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RM_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AptitudeAnswer">
+          <Key>
+            <PropertyRef Name="AnsSheetId" />
+          </Key>
+          <Property Name="AnsSheetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateId" Type="Int32" />
+          <Property Name="QueID" Type="Int32" />
+          <Property Name="UserResponse" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="Duration" Type="Int32" />
+          <NavigationProperty Name="AptitudeQuestion" Relationship="Self.FK__AptitudeA__QueID__44FF419A" FromRole="AptitudeAnswer" ToRole="AptitudeQuestion" />
+        </EntityType>
+        <EntityType Name="AptitudeQuestion">
+          <Key>
+            <PropertyRef Name="QueId" />
+          </Key>
+          <Property Name="QueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Que" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueOpA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueOpB" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueOpC" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueOpD" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueAns" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AptitudeAnswers" Relationship="Self.FK__AptitudeA__QueID__44FF419A" FromRole="AptitudeQuestion" ToRole="AptitudeAnswer" />
+        </EntityType>
+        <Association Name="FK__AptitudeA__QueID__44FF419A">
+          <End Role="AptitudeQuestion" Type="Self.AptitudeQuestion" Multiplicity="0..1" />
+          <End Role="AptitudeAnswer" Type="Self.AptitudeAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AptitudeQuestion">
+              <PropertyRef Name="QueId" />
+            </Principal>
+            <Dependent Role="AptitudeAnswer">
+              <PropertyRef Name="QueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RM_ProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AptitudeAnswers" EntityType="Self.AptitudeAnswer" />
+          <EntitySet Name="AptitudeQuestions" EntityType="Self.AptitudeQuestion" />
+          <AssociationSet Name="FK__AptitudeA__QueID__44FF419A" Association="Self.FK__AptitudeA__QueID__44FF419A">
+            <End Role="AptitudeQuestion" EntitySet="AptitudeQuestions" />
+            <End Role="AptitudeAnswer" EntitySet="AptitudeAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RM_ProjectModelStoreContainer" CdmEntityContainer="RM_ProjectEntities">
+          <EntitySetMapping Name="AptitudeAnswers">
+            <EntityTypeMapping TypeName="RM_ProjectModel.AptitudeAnswer">
+              <MappingFragment StoreEntitySet="AptitudeAnswer">
+                <ScalarProperty Name="AnsSheetId" ColumnName="AnsSheetId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="QueID" ColumnName="QueID" />
+                <ScalarProperty Name="UserResponse" ColumnName="UserResponse" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AptitudeQuestions">
+            <EntityTypeMapping TypeName="RM_ProjectModel.AptitudeQuestion">
+              <MappingFragment StoreEntitySet="AptitudeQuestion">
+                <ScalarProperty Name="QueId" ColumnName="QueId" />
+                <ScalarProperty Name="Que" ColumnName="Que" />
+                <ScalarProperty Name="QueOpA" ColumnName="QueOpA" />
+                <ScalarProperty Name="QueOpB" ColumnName="QueOpB" />
+                <ScalarProperty Name="QueOpC" ColumnName="QueOpC" />
+                <ScalarProperty Name="QueOpD" ColumnName="QueOpD" />
+                <ScalarProperty Name="QueAns" ColumnName="QueAns" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

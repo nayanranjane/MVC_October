@@ -1,0 +1,77 @@
+﻿@model IEnumerable<QuizApp.Models.AptitudeQuestion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QueId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Que)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueOpA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueOpB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueOpC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueOpD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueAns)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <h2> No Question to show !!</h2>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Que)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueOpA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueOpB)
+                </td>b
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueOpC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueOpD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueAns)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
