@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d25516026b54a7b87e82a286545c377" Name="Diagram1" ZoomLevel="96">
+        <EntityTypeShape EntityType="RM_ProjectModel.AptitudeAnswer" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.AptitudeQuestion" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Candidate" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Company" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Interview" Width="1.5" PointX="13.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.JobApplication" Width="1.5" PointX="11.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.JobPost" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Skill" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Staff" Width="1.5" PointX="11.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.Status" Width="1.5" PointX="9" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RM_ProjectModel.User" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RM_ProjectModel.FK__AptitudeA__Candi__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__AptitudeA__QueID__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Candidate__Skill__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Candidate__UserI__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__JobApplic__Candi__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__JobPost__Company__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Staff__CompanyID__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Interview__Appli__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Interview__Staff__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Interview__Statu__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__JobApplic__JobId__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__JobApplic__Statu__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__JobPost__SkillsI__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="RM_ProjectModel.FK__Staff__UserId__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

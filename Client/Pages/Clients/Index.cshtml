@@ -1,0 +1,51 @@
+﻿@page
+@model Client.Pages.Clients.IndexModel
+@{
+}
+<h2>List of the Client</h2>
+<a class='btn btn-primary btn-sm' href="/Clients/Create">New Client</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+             <th>Name</th>
+              <th>Email</th>
+               <th>Contact</th>
+                <th>Address</th>
+                <th>CreateOn</th>
+               
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listClients)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.email</td>
+                <td>@item.phone</td>
+                <td>@item.address</td>
+                <td>@item.createdAt</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=@item.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Clients/Delete?id=@item.id">Delete</a>
+
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
+ @foreach (var item in Model.listClients)
+        {
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="..." alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">@item.name</h5>
+                    <p class="card-text">"Item Id = "@item.id" Address = "@item.address</p>
+                    <a href="#" class="btn btn-primary">"More Information"</a>
+                  </div>
+               </div>
+        }
+
