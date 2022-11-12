@@ -7,7 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="OpenAPIs\swagger.json" CodeGenerator="NSwagCSharp" Namespace="ClientNs" ClassName="CategoryNew">
+    <None Include="OpenAPIs\swagger.json" ClassName="CategoryNew" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="OpenAPIs\swagger1.json" ClassName="proxy" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="OpenAPIs\swagger2.json" ClassName="GeneratedClass" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="OpenAPIs\swagger3.json" ClassName="GeneratedClass" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <OpenApiReference Include="OpenAPIs\swagger4.json" CodeGenerator="NSwagCSharp" Namespace="ClientNs" ClassName="GeneratedCode">
       <SourceUri>https://localhost:7124/swagger/v1/swagger.json</SourceUri>
     </OpenApiReference>
   </ItemGroup>
@@ -17,6 +33,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5">
       <PrivateAssets>all</PrivateAssets>

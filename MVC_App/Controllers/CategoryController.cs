@@ -95,6 +95,10 @@ namespace MVC_App.Controllers
         public async Task<IActionResult> Product(int id)
         {
             var product = await dbAccess.GetAsync(id);
+            return View(product);
+
+
+
         }
     }
 

@@ -61,10 +61,10 @@ namespace webApi.Models
                     .HasMaxLength(300)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK__Product__Categor__2B3F6F97");
+                //entity.HasOne(d => d.Category)
+                //    .WithMany(p => p.Products)
+                //    .HasForeignKey(d => d.CategoryId)
+                //    .HasConstraintName("FK__Product__Categor__2B3F6F97");
             });
 
             OnModelCreatingPartial(modelBuilder);

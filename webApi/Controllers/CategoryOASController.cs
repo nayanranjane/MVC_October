@@ -15,11 +15,13 @@ namespace webApi.Controllers
     [ApiController]
     public class CategoryOASController : ControllerBase
     {
-        IDbAccessService<Category, int> catDbAccess;
 
-        public CategoryOASController(IDbAccessService<Category, int> catDbAccess)
+        IDbAccessService<Category, int> catDbAccess;
+        IDbAccessService<Product, int> prodDbAccess;
+        public CategoryOASController(IDbAccessService<Category, int> catDbAccess, IDbAccessService<Product, int> prodDbAccess)
         {
             this.catDbAccess = catDbAccess;
+            this.prodDbAccess = prodDbAccess;
         }
         /// <summary>
         /// MOdify the HTTP Action Method to
@@ -38,6 +40,22 @@ namespace webApi.Controllers
         {
             var result = await catDbAccess.CreateAsync(category);
             return result;
+        }
+
+        [HttpGet("/getproductlist")]
+
+        public async Task<IEnumerable<Product>> GetProduct()
+        {
+            var result = await prodDbAccess.GetAsync();
+            return result;
+        }
+
+        [HttpGet("/getproductwithcategory")]
+
+        public async Task<IEnumerable<Product>> GetProductWithCategory(int id)
+        {
+            var result =( await prodDbAccess.GetAsync()).ToList().Where(prd=>prd.CategoryId==id).ToList();
+            return (result);
         }
     }
 }

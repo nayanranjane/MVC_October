@@ -155,7 +155,7 @@
         }
       }
     },
-    "/api/CategoryOAS/getproductlist": {
+    "/getproductlist": {
       "get": {
         "tags": [
           "CategoryOAS"

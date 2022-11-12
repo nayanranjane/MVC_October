@@ -1,8 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable< ClientNs.Category>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasePrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasePrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.CategoryId  }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.CategoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.CategoryId }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.CategoryId }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

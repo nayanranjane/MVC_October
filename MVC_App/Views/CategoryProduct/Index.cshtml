@@ -1,0 +1,103 @@
+﻿@model Tuple<List<Coditas.Ecomm.Entities.Category>,List<Coditas.Ecomm.Entities.Product>>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index
+</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               CategoryId
+            </th>
+            <th>
+                CategoryName
+            </th>
+            <th>
+                BasePrice
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.CategoryId);
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasePrice)
+                </td>
+                <td>
+                    @Html.ActionLink("ShowDetails", "ShowDetails", new {  id=item.CategoryId  })
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                ProductUniqueId
+            </th>
+            <th>
+                ProductName
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                CategoryId
+            </th>
+            <th>
+                Manufacturer
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item2)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductUniqueId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descrition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerID)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

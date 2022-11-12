@@ -155,7 +155,7 @@
         }
       }
     },
-    "/api/CategoryOAS/getproductlist": {
+    "/getproductlist": {
       "get": {
         "tags": [
           "CategoryOAS"
@@ -482,9 +482,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "Category": {
-            "$ref": "#/components/schemas/Category"
           }
         },
         "additionalProperties": false
