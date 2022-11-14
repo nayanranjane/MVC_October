@@ -42,16 +42,29 @@ namespace MVC_App.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Category category)
         {
-            try
+
+            if (ModelState.IsValid)
             {
                 var response = await dbAccess.CreateAsync(category);
-                return RedirectToAction("Index", "Category");   
-            }
-            catch (Exception ex)
-            {
+                if (category.BasePrice < 0)
+                {
+                    TempData["CategoryId"] = category.CategoryId;
+                    TempData["CategoryName"] = category.CategoryName;
+                    TempData.Keep();
+                    throw new Exception("Base Price Cannot be -ve");
+                    // Return to Index Action Method in Same
 
-                return View("Error");
+
+                }
+                // Controller
+              
+                return RedirectToAction("Index", "Category");
             }
+            else
+            {
+                return View(category);
+            }
+
         }
         public async Task<IActionResult> Edit(int id)
         {

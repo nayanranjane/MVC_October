@@ -1,0 +1,22 @@
+﻿@model MVC_CoreClient.Models.CategorySearchModel
+@{
+    ViewData["Title"] = "Category";
+    var categoriesList = (List<ClientNs.Category>)ViewBag.Categories;
+}
+
+<h1>Search Category</h1>
+
+
+<br></br>
+<h4>select Category to Search for respective Product</h4>
+
+
+@using(Html.BeginForm()){
+    foreach(var cat in categoriesList){
+        @Html.RadioButtonFor(m=>m.CategoryId,cat.CategoryId)@cat.CategoryName;
+        <br/>
+    }
+    <br/>
+    <br/>
+    <input type = "submit" value="submit" />
+}
