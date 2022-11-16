@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Coditas.Ecomm.Entities;
 using Coditas.Ecom.Repositories;
+using MVC_App.CustomSessionExtensions;
 
 namespace MVC_App.Controllers
 {
@@ -30,7 +31,22 @@ namespace MVC_App.Controllers
         {
             try
             {
+                
                 Category category = new Category();
+                //if (TempData != null && TempData.Count()!=0)
+                //{
+                //    category.CategoryName =(string) TempData["CateogoryName"];
+                //    category.CategoryId = (int)TempData["CategoryId"];
+                //    category.BasePrice = (int)TempData["BasePrice"];
+                //}
+                if (HttpContext.Session.GetObject<Category>("Session") != null)
+                {
+                    category = HttpContext.Session.GetObject<Category>("Session");
+                    ViewBag.ErrorMessage = HttpContext.Session.GetString("ErrorMessage");
+                    ViewData["ErrorMessage"] = HttpContext.Session.GetString("ErrorMessage");
+                    HttpContext.Session.Clear();
+                }
+
                 return View(category);
             }
             catch (Exception)
@@ -48,9 +64,13 @@ namespace MVC_App.Controllers
                 var response = await dbAccess.CreateAsync(category);
                 if (category.BasePrice < 0)
                 {
-                    TempData["CategoryId"] = category.CategoryId;
-                    TempData["CategoryName"] = category.CategoryName;
-                    TempData.Keep();
+                    //TempData["CategoryId"] = category.CategoryId;
+                    //TempData["CategoryName"] = category.CategoryName;
+                    //TempData["BasePrice"] = category.BasePrice;
+
+                    HttpContext.Session.SetObject<Category>("Session", category);
+                    HttpContext.Session.SetString("ErrorMessage", "Base price cannot be -ve");
+                    //TempData.Keep();
                     throw new Exception("Base Price Cannot be -ve");
                     // Return to Index Action Method in Same
 

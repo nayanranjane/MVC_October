@@ -2,7 +2,9 @@
 
 @{
     ViewData["Title"] = "Create";
-}
+    var ErrorMessage = @ViewBag.ErrorMessage;
+    var ErrorMessage2 = ViewData["ErrorMessage"];
+    }
 
 <h1>Create</h1>
 
@@ -22,6 +24,9 @@
                 <input asp-for="CategoryName" class="form-control" />
                 <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
+            @if(ErrorMessage!=null || ErrorMessage2!=null){
+               <h5 class="text-danger">@ErrorMessage</h5>
+            }
             <div class="form-group">
                 <label asp-for="BasePrice" class="control-label"></label>
                 <input asp-for="BasePrice" class="form-control" />

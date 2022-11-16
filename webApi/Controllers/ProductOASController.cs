@@ -30,7 +30,7 @@ namespace webApi.Controllers
         public async Task<IEnumerable<Category>> Get()
         {
             var result = await prodDbAccess.GetAsync();
-            return result;
+            return result;      
         }
 
         [HttpPost("/createproduct")]
@@ -39,5 +39,7 @@ namespace webApi.Controllers
             var result = await prodDbAccess.CreateAsync(category);
             return result;
         }
+
+
     }
 }

@@ -19,6 +19,13 @@ builder.Services.AddControllersWithViews(options =>
     options.Filters.Add(typeof(AppExceptionAttribute));
 });
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+});
+
 
 builder.Services.AddDbContext<EShoppingCodiContext>(opt =>
 {
@@ -53,6 +60,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 
