@@ -27,6 +27,12 @@ namespace MVC_App.Controllers
                 return View("Error");
             }
         }
+
+        public async Task<IActionResult> IndexWithTagHelper()
+        {
+            var records = await dbAccess.GetAsync();
+            return View(records);
+        }
         public async Task<IActionResult> Create()
         {
             try

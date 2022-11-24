@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
-using NuGet.Protocol.Plugins;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
