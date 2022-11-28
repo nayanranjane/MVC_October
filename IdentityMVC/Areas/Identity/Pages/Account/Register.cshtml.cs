@@ -118,10 +118,19 @@ namespace IdentityMVC.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
-
+                var userDetails = await _userManager.FindByEmailAsync(Input.Email);
+                var userAssigned = await _userManager.GetRolesAsync(userDetails);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    if (userAssigned.Count() != 0)
+                    {
+                        _logger.LogInformation("User created a new account with password.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Registered successfully! ");
+                        return Page();
+                    }
 
                     //var userId = await _userManager.GetUserIdAsync(user);
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -141,7 +150,7 @@ namespace IdentityMVC.Areas.Identity.Pages.Account
                     //}
                     //else
                     //{
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     //}
                 }

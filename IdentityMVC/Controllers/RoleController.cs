@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IdentityMVC.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles =("Admin,HR"))]
     public class RoleController : Controller
     {
 
@@ -113,13 +113,9 @@ namespace IdentityMVC.Controllers
                 return View(new UserInRole());
             }
 
-            //2.B Only one user can have one role
-            var userRole = await userManager.GetRolesAsync(UserExist);
-            
-
             // 3. Assign Role To User
 
-
+            var result = await userManager.AddToRoleAsync(UserExist, RoleExist.Name);
 
             if (result.Succeeded)
                 return RedirectToAction("Index");
